@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Resume - <%= name %></title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paper-css/0.3.0/paper.css">
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body class="letter">
+    <article class="sheet">
+      <header>
+        <div>
+          <h1><%= name %></h1>
+          <h3><%= positions[0]['title'] %></h3>
+        </div>
+        <div class="personal">
+          <h3><%= location %></h3>
+          <h3><%= email %> <%= phone %></h3>
+        </div>
+      </header>
+
+      <main>
+        <section>
+          <header>
+            <h2>> Summary</h2>
+          </header>
+          <main>
+            <p><%= summary %></p>
+          </main>
+        </section>
+
+        <section>
+          <header>
+            <h2>> Work history</h2>
+          </header>
+
+          <main>
+            <% positions.filter { |pos| pos.key?('isHidden') == false }.each do |position| %>
+              <section class="position">
+                <header>
+                  <div>
+                    <h3><%= position['title'] %> - <%= position['employer'] %></h3>
+                  </div>
+                  <div>
+                    <span><%= position['dateRange'] %></span>
+                  </div>
+                </header>
+                <main>
+                  <ul>
+                    <% position['description'].each do |bullet| %>
+                      <li><%= bullet %></li>
+                    <% end %>
+                  </ul>
+                </main>
+              </section>
+            <% end %>
+          </main>
+        </section>
+
+        <section>
+          <header>
+            <h2>> Education</h2>
+          </header>
+
+          <main>
+            <% education.each do |position| %>
+              <section class="position">
+                <header>
+                  <div>
+                    <h3><%= position['qualification'] %> - <%= position['institution'] %></h3>
+                  </div>
+                  <div>
+                    <span><%= position['dateRange'] %></span>
+                  </div>
+                </header>
+                <main>
+                  <ul>
+                    <% position['description'].each do |bullet| %>
+                      <li><%= bullet %></li>
+                    <% end %>
+                  </ul>
+                </main>
+              </section>
+            <% end %>
+          </main>
+        </section>
+
+        <section>
+          <header>
+            <h2>> Skills</h2>
+          </header>
+
+          <main>
+            <ul>
+              <% skills.each_pair do |title, description| %>
+                <li><b><%= title %>:</b> <%= description %></li>
+              <% end %>
+            </ul>
+          </main>
+        </section>
+      </main>
+    </article>
+  </body>
+</html>

@@ -1,0 +1,86 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Employment History",
+  "description": "What you've been up to",
+  "type": "object",
+  "properties": {
+    "name": {
+      "description": "Full name",
+      "type": "string"
+    },
+    "summary": {
+      "description": "A sentence or two at most about your current situation",
+      "type": "string"
+    },
+    "positions": {
+      "description": "Your items of work history",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "title",
+          "employer",
+          "dateRange",
+          "description"
+        ],
+        "properties": {
+          "isHidden": {
+            "description": "If this position should be hidden - optional",
+            "type": "boolean"
+          },
+          "title": {
+            "description": "Job title",
+            "type": "string"
+          },
+          "employer": {
+            "description": "Name of employer",
+            "type": "string"
+          },
+          "dateRange": {
+            "description": "Start to end date (or \"Present\")",
+            "type": "string"
+          },
+          "location": {
+            "description": "Employment location (or \"Remote\") - optional",
+            "type": "string"
+          },
+          "description": {
+            "description": "List of relevant facts about the role",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "education": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "qualification": {
+            "description": "Title of degree, certificate, etc",
+            "type": "string"
+          },
+          "institution": {
+            "description": "Place of study",
+            "type": "string"
+          },
+          "dateRange": {
+            "description": "Start to end date (or \"Present\")",
+            "type": "string"
+          },
+          "description": {
+            "description": "List of relevant facts about the qualification",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": []
+}

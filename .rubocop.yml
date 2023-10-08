@@ -1,0 +1,13 @@
+require: rubocop-rspec
+
+AllCops:
+  NewCops: enable
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 36
+
+Metrics/AbcSize:
+  CountRepeatedAttributes: false
